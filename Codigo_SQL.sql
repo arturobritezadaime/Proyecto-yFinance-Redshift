@@ -18,8 +18,6 @@ CREATE TABLE IF NOT EXISTS arturo_b_a_coderhouse.stock_data_staging
     Stock_Splits DECIMAL(12, 6) ENCODE RAW -- Almacena las divisiones de acciones en su forma original (Raw)
 );
 
--- Crear el esquema
-CREATE SCHEMA IF NOT EXISTS arturo_b_a_coderhouse;
 -- Crear la tabla de la Dimensión Fecha
 BEGIN;
 -- Intenta eliminar la tabla si ya existe, sin generar un error si no existe.
