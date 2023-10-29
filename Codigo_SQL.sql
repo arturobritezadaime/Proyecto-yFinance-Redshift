@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS arturo_b_a_coderhouse.stock_data_staging
 -- Crear la tabla de la Dimensión Fecha
 BEGIN;
 -- Intenta eliminar la tabla si ya existe, sin generar un error si no existe.
-<<<<<DROP TABLE IF EXISTS arturo_b_a_coderhouse.Dim_Fecha;>>>>>
+DROP TABLE IF EXISTS arturo_b_a_coderhouse.Dim_Fecha;
 -- Crea la tabla de la Dimensión Fecha.
 CREATE TABLE IF NOT EXISTS arturo_b_a_coderhouse.Dim_Fecha
 (
