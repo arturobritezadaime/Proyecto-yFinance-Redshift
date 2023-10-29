@@ -33,9 +33,11 @@ Asegúrate de tener instalado lo siguiente antes de utilizar el código:
    ```ini
    [fechas]
    fecha_inicio = yyyy-mm-dd
-
+   
    [empresas]
-   lista = [["AAPL", "Apple"], ["GOOGL", "Alphabet"]] # Ejemplo
+   #lista = [["AAPL", "Apple"], ["GOOGL", "Alphabet"]] # Ejemplo corto
+   lista =[["MMM", "3M"], ["AOS", "A. O. Smith"], ["ABT", "Abbott Laboratories"], ["ABBV", "AbbVie"], ["ABMD", "Abiomed"], ["ACN", "Accenture"], ["ATVI", "Activision Blizzard"], ["ADM", "ADM"], ["ADBE", "Adobe"], ["AAP", "Advance Auto Parts"], ["AMD", "Advanced Micro Devices"], ["AES", "AES Corp"], ["AFL", "Aflac"], ["A", "Agilent Technologies"], ["APD", "Air Products & Chemicals"]]
+
 
    [redshift]
    user = ejemplo-user
