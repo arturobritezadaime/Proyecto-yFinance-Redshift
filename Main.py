@@ -2,6 +2,7 @@
 import yfinance as yf
 import pandas as pd
 import configparser
+from Conexion_Creacion_Tablas import crear_tablas_redshift  # Importa la función necesaria
 
 def obtener_configuracion():
     """
@@ -84,7 +85,8 @@ def main():
 
     print("\nDataFrame Fac_Precio_Acciones:")
     print(df_fac_precio_acciones)
-
+    # Llama a la función de Conexion_Creacion_Tablas para crear las tablas en Redshift
+    crear_tablas_redshift()
 if __name__ == "__main__":
     main()
 
