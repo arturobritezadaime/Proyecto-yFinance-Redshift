@@ -1,7 +1,7 @@
 --La compresión "Raw" es una elección adecuada para un área de staging en Amazon Redshift, 
 --ya que permite una carga rápida y un acceso eficiente a los datos sin la necesidad de aplicar compresión adicional. 
 -- Crear el esquema de área de staging si aún no existe
--- Crear el esquema
+--No tengo los permisos suficientes pero lo ideal seria crear dos esquemas uno de staging y otro para el DW
 CREATE SCHEMA IF NOT EXISTS arturo_b_a_coderhouse;
 
 -- Crear la tabla de staging para los datos de acciones
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS arturo_b_a_coderhouse.Dim_Accion
     Nombre_Empresa VARCHAR(100) ENCODE lzo, -- Almacena el nombre de la empresa con compresión lzo
     Sector VARCHAR(100) ENCODE lzo, -- Almacena el sector con compresión lzo
     Industria VARCHAR(100) ENCODE lzo, -- Almacena la industria con compresión lzo
-    Otros_Detalles TEXT ENCODE lzo -- Almacena otros detalles con compresión lzo
+    Otros_Detalles TEXT ENCODE lzo, -- Almacena otros detalles con compresión lzo
     PRIMARY KEY (ID_Accion)
 )
 SORTKEY (Símbolo_Acción); -- Utilizar el símbolo de la acción como clave de ordenación, ya que es comúnmente utilizada para buscar información específica de una acción en las consultas
