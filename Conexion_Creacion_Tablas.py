@@ -13,54 +13,32 @@ redshift_config = {
     'port': int(config['redshift']['port']),
     'database': config['redshift']['database']
 }
+
+
 # Paso 2: Crear las tablas en Redshift
 def crear_tablas_redshift():
-
     try:
         # Establecer una conexión a Redshift
         conn = psycopg2.connect(**redshift_config)
         cursor = conn.cursor()
 
-        # Crear la tabla Dim_Fecha
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS Dim_Fecha (
-                ID_Fecha INTEGER PRIMARY KEY,
-                Fecha TIMESTAMP ENCODE az64,
-                Día INTEGER ENCODE az64,
-                Mes INTEGER ENCODE az64,
-                Año INTEGER ENCODE az64
-            )
+        # Leer el contenido del archivo Codigo_SQL.sql
+        with open('Codigo_SQL.sql', 'r') as sql_file:
+            sql_statements = sql_file.read()
 
-        """)
+        # Dividir el contenido del archivo en sentencias SQL individuales (separadas por punto y coma)
+        sql_parts = sql_statements.split(';')
 
-        # Crear la tabla Dim_Accion
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS Dim_Accion (
-                ID_Accion INTEGER PRIMARY KEY,
-                Símbolo_Acción VARCHAR(10),
-                Nombre_Empresa VARCHAR(100) ENCODE lzo,
-                Sector VARCHAR(100) ENCODE lzo,
-                Industria VARCHAR(100) ENCODE lzo,
-                Otros_Detalles TEXT ENCODE lzo
-            )
-            SORTKEY (Símbolo_Acción)
+        transaction_sql = ""  # Inicializa la variable transaction_sql
 
-        """)
+        for sql_part in sql_parts:
+            if sql_part.strip():  # Asegurarse de que la sentencia no esté en blanco
+                transaction_sql += sql_part + ";"  # Agregar fragmentos de SQL a la transacción
 
-        # Crear la tabla Fac_Precio_Acciones
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS Fac_Precio_Acciones (
-                ID_Fecha INTEGER DISTKEY,
-                ID_Accion INTEGER,
-                Precio_Apertura DECIMAL(10, 2) ENCODE az64,
-                Precio_Máximo DECIMAL(10, 2) ENCODE az64,
-                Precio_Mínimo DECIMAL(10, 2) ENCODE az64,
-                Precio_Cierre DECIMAL(10, 2) SORTKEY,
-                Volumen BIGINT ENCODE az64,
-                Dividendos DECIMAL(10, 2) ENCODE az64,
-                Divisiones_de_Acciones DECIMAL(10, 2) ENCODE az64
-            );
-        """)
+                # Verificar si la sentencia contiene un COMMIT
+                if "COMMIT" in sql_part:
+                    cursor.execute(transaction_sql)  # Ejecutar la transacción
+                    transaction_sql = ""  # Reiniciar la variable transaction_sql
 
         # Confirmar la transacción
         conn.commit()
@@ -72,5 +50,6 @@ def crear_tablas_redshift():
     finally:
         if conn:
             conn.close()
+
 if __name__ == "__main__":
     crear_tablas_redshift()
