@@ -38,7 +38,9 @@ Asegúrate de tener instalado lo siguiente antes de utilizar el código:
    #lista = [["AAPL", "Apple"], ["GOOGL", "Alphabet"]] # Ejemplo corto
    lista =[["MMM", "3M"], ["AOS", "A. O. Smith"], ["ABT", "Abbott Laboratories"], ["ABBV", "AbbVie"], ["ABMD", "Abiomed"], ["ACN", "Accenture"], ["ATVI", "Activision Blizzard"], ["ADM", "ADM"], ["ADBE", "Adobe"], ["AAP", "Advance Auto Parts"], ["AMD", "Advanced Micro Devices"], ["AES", "AES Corp"], ["AFL", "Aflac"], ["A", "Agilent Technologies"], ["APD", "Air Products & Chemicals"]]
 
-
+   [alpha_vantage]
+   api_key = 'EJEMPLO_API_KEY'
+   
    [redshift]
    user = ejemplo-user
    password = ejemplo-password 
