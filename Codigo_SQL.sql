@@ -7,16 +7,19 @@
 -- Crear la tabla de staging para los datos de acciones
 CREATE TABLE IF NOT EXISTS arturo_b_a_coderhouse.stock_data_staging
 (
-    "Date" DATE ENCODE RAW, -- Almacena la fecha en su forma original (Raw)
-    Symbol VARCHAR(10) ENCODE RAW, -- Almacena el símbolo en su forma original (Raw)
-    "Open" DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio de apertura en su forma original (Raw)
-    High DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio máximo en su forma original (Raw)
-    Low DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio mínimo en su forma original (Raw)
-    "Close" DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio de cierre en su forma original (Raw)
-    Volume BIGINT ENCODE RAW, -- Almacena el volumen en su forma original (Raw)
-    Dividends DECIMAL(12, 6) ENCODE RAW, -- Almacena los dividendos en su forma original (Raw)
-    Stock_Splits DECIMAL(12, 6) ENCODE RAW -- Almacena las divisiones de acciones en su forma original (Raw)
-);
+    date DATE ENCODE RAW, -- Almacena la fecha en su forma original (Raw)
+    symbol VARCHAR(10) ENCODE RAW, -- Almacena el símbolo en su forma original (Raw)
+    opens DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio de apertura en su forma original (Raw)
+    high DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio máximo en su forma original (Raw)
+    low DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio mínimo en su forma original (Raw)
+    "close" DECIMAL(12, 6) ENCODE RAW, -- Almacena el precio de cierre en su forma original (Raw)
+    volume BIGINT ENCODE RAW, -- Almacena el volumen en su forma original (Raw)
+    dividends DECIMAL(12, 6) ENCODE RAW, -- Almacena los dividendos en su forma original (Raw)
+    "stock splits" DECIMAL(12, 6) ENCODE RAW -- Almacena las divisiones de acciones en su forma original (Raw)
+)
+DISTSTYLE AUTO
+;
+
 COMMIT
 -- Crear la tabla de la Dimensión Fecha
 --BEGIN
