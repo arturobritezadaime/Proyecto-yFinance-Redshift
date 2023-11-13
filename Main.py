@@ -5,7 +5,7 @@ import configparser
 from datetime import datetime
 import Conexion_Creacion_Tablas  # Importar el módulo de creación de tablas
 from Carga import cargar_dataframe_accion_en_redshift, cargar_dataframe_fecha_en_redshift, \
-    cargar_dataframe_precio_acciones_en_redshift
+    cargar_dataframe_precio_acciones_en_redshift, cargar_dataframe_staging_en_redshift
 
 def obtener_configuracion():
     config = configparser.ConfigParser()
@@ -137,6 +137,7 @@ def main():
     # Crear las tablas en Redshift
     Conexion_Creacion_Tablas.crear_tablas_redshift()
 # Realizar la carga de datos en Redshift
+    cargar_dataframe_staging_en_redshift(df_stock_data_staging,'stock_data_staging')
     cargar_dataframe_accion_en_redshift(df_dim_acciones, 'dim_accion')
     cargar_dataframe_fecha_en_redshift(df_dim_fecha, 'dim_fecha')
     cargar_dataframe_precio_acciones_en_redshift(df_fac_precio_acciones, 'fac_precio_acciones')
