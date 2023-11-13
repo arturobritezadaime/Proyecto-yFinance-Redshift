@@ -65,7 +65,12 @@ Asegúrate de tener instalado lo siguiente antes de utilizar el código:
    ```
 
 2. Sigue las instrucciones y mensajes en la consola para monitorear el progreso y los resultados de la ejecución.
-
+## Estructura del Proyecto
+Main.py: Script principal para ejecutar el análisis y carga de datos.
+Carga.py: Módulo para la carga de datos en Redshift.
+Conexion_Creacion_Tablas.py: Módulo para la conexión a Redshift y creación de tablas.
+Codigo_SQL.sql: Archivo con las sentencias SQL para la creación de tablas en Redshift.
+README.md: Documentación principal del proyecto.
 ## Contribuciones
 
 Si deseas contribuir a este proyecto, siéntete libre de crear un pull request o informar sobre problemas. Apreciamos tu contribución.
