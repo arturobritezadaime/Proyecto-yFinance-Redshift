@@ -1,55 +1,58 @@
 import psycopg2
-import configparser
+import utilidades
+import logging
 
-# Leer la configuración de conexión a Redshift desde config.ini
-config = configparser.ConfigParser()
-config.read('config.ini')
+ARCHIVO_LOG = utilidades.ARCHIVO_LOG  # Importa el nombre del archivo de log desde utilidades.py
 
-# Obtener la configuración de Redshift
-redshift_config = {
-    'user': config['redshift']['user'],
-    'password': config['redshift']['password'],
-    'host': config['redshift']['host'],
-    'port': int(config['redshift']['port']),
-    'database': config['redshift']['database']
-}
+def dividir_sql(sql_statements):
+    """
+    Divide el contenido del archivo en sentencias SQL individuales.
+    """
+    return [sql.strip() for sql in sql_statements.split(';') if sql.strip()]
 
+def ejecutar_transaccion(cursor, transaction_sql):
+    """
+    Ejecuta una transacción SQL en el cursor.
+    """
+    cursor.execute(transaction_sql)
 
-# Paso 2: Crear las tablas en Redshift
 def crear_tablas_redshift():
+    """
+    Crea las tablas en Redshift.
+    """
     try:
+        # Configurar el logger desde utilidades.py
+        utilidades.configurar_logger()
+
+        # Obtener la configuración de Redshift desde utilidades.py
+        redshift_config = utilidades.obtener_configuracion_redshift()
+
         # Establecer una conexión a Redshift
-        conn = psycopg2.connect(**redshift_config)
-        cursor = conn.cursor()
+        with psycopg2.connect(**redshift_config) as conn:
+            with conn.cursor() as cursor:
+                # Leer el contenido del archivo Codigo_SQL.sql
+                with open('Codigo_SQL.sql', 'r') as sql_file:
+                    sql_statements = sql_file.read()
 
-        # Leer el contenido del archivo Codigo_SQL.sql
-        with open('Codigo_SQL.sql', 'r') as sql_file:
-            sql_statements = sql_file.read()
+                # Dividir el contenido del archivo en sentencias SQL individuales
+                sql_parts = dividir_sql(sql_statements)
 
-        # Dividir el contenido del archivo en sentencias SQL individuales (separadas por punto y coma)
-        sql_parts = sql_statements.split(';')
+                transaction_sql = ""  # Inicializa la variable transaction_sql
 
-        transaction_sql = ""  # Inicializa la variable transaction_sql
+                for sql_part in sql_parts:
+                    transaction_sql += sql_part + ";"
 
-        for sql_part in sql_parts:
-            if sql_part.strip():  # Asegurarse de que la sentencia no esté en blanco
-                transaction_sql += sql_part + ";"  # Agregar fragmentos de SQL a la transacción
+                    # Verificar si la sentencia contiene un COMMIT
+                    if "COMMIT" in sql_part:
+                        ejecutar_transaccion(cursor, transaction_sql)
+                        transaction_sql = ""  # Reiniciar la variable transaction_sql
 
-                # Verificar si la sentencia contiene un COMMIT
-                if "COMMIT" in sql_part:
-                    cursor.execute(transaction_sql)  # Ejecutar la transacción
-                    transaction_sql = ""  # Reiniciar la variable transaction_sql
-
-        # Confirmar la transacción
-        conn.commit()
-        print("Tablas en Redshift creadas con éxito.")
+                # Confirmar la transacción
+                conn.commit()
+                logging.info("Tablas en Redshift creadas con éxito.")
 
     except (Exception, psycopg2.Error) as error:
-        print("Error al crear tablas en Redshift:", error)
-
-    finally:
-        if conn:
-            conn.close()
+        logging.error("Error al crear tablas en Redshift: %s", error)
 
 if __name__ == "__main__":
     crear_tablas_redshift()
