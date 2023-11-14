@@ -10,7 +10,7 @@ ARCHIVO_LOG = 'log.txt'
 def cargar_dataframe_staging_en_redshift(dataframe, nombre_tabla):
     logging.basicConfig(filename=ARCHIVO_LOG, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
                         filemode='a')
-    registrador = logging.getLogger(__name__)
+    logger = logging.getLogger(__name__)
 
     try:
         configuracion_redshift = obtener_configuracion_redshift()
@@ -25,14 +25,14 @@ def cargar_dataframe_staging_en_redshift(dataframe, nombre_tabla):
             dataframe = redondear_columnas(dataframe)
 
             if inspector.has_table(nombre_tabla):
-                cargar_datos(registrador, dataframe, nombre_tabla, conexion)
+                cargar_datos(logger, dataframe, nombre_tabla, conexion)
             else:
-                crear_y_cargar_tabla(registrador, dataframe, nombre_tabla, conexion)
+                crear_y_cargar_tabla(logger, dataframe, nombre_tabla, conexion)
 
     except exc.SQLAlchemyError as e:
-        registrador.error(f"Error de SQLAlchemy: {str(e)}")
+        logger.error(f"Error de SQLAlchemy: {str(e)}")
     except Exception as e:
-        registrador.error(f"Ocurrió un error inesperado: {str(e)}")
+        logger.error(f"Ocurrió un error inesperado: {str(e)}")
 
 
 def redondear_columnas(dataframe):
@@ -45,7 +45,7 @@ def redondear_columnas(dataframe):
     return dataframe
 
 
-def cargar_datos(registrador, dataframe, nombre_tabla, conexion):
+def cargar_datos(logger, dataframe, nombre_tabla, conexion):
     dataframe = dataframe.rename(columns=lambda x: x.lower())
     filas_existente = pd.read_sql(f"SELECT * FROM {nombre_tabla}", conexion)
 
@@ -54,15 +54,15 @@ def cargar_datos(registrador, dataframe, nombre_tabla, conexion):
 
     if not nueva_fila.empty:
         nueva_fila.to_sql(nombre_tabla, conexion, if_exists='append', index=False, method='multi', chunksize=500)
-        registrador.info(f"Datos cargados en la tabla {nombre_tabla}.")
+        logger.info(f"Datos cargados en la tabla {nombre_tabla}.")
     else:
-        registrador.info(f"No hay filas nuevas para cargar en la tabla {nombre_tabla}.")
+        logger.info(f"No hay filas nuevas para cargar en la tabla {nombre_tabla}.")
 
 
-def crear_y_cargar_tabla(registrador, dataframe, nombre_tabla, conexion):
-    registrador.info(f"La tabla {nombre_tabla} no existe en Redshift. Creando la tabla y cargando datos...")
+def crear_y_cargar_tabla(logger, dataframe, nombre_tabla, conexion):
+    logger.info(f"La tabla {nombre_tabla} no existe en Redshift. Creando la tabla y cargando datos...")
     dataframe.to_sql(nombre_tabla, conexion, if_exists='replace', index=False, method='multi', chunksize=500)
-    registrador.info(f"Tabla {nombre_tabla} creada y datos cargados en Redshift.")
+    logger.info(f"Tabla {nombre_tabla} creada y datos cargados en Redshift.")
 
 
 
@@ -168,6 +168,9 @@ def cargar_dataframe_precio_acciones_en_redshift(dataframe, nombre_tabla):
 
 
 def obtener_configuracion_redshift():
+    """
+    Obtiene la configuración de Redshift desde un archivo de configuración.
+    """
     config = configparser.ConfigParser()
     config.read('config.ini')
 
@@ -181,5 +184,8 @@ def obtener_configuracion_redshift():
     return redshift_config
 
 def obtener_cadena_conexion(redshift_config):
+    """
+    Construye la cadena de conexión para Redshift.
+    """
     connection_string = f"postgresql://{redshift_config['user']}:{redshift_config['password']}@{redshift_config['host']}:{redshift_config['port']}/{redshift_config['database']}"
     return connection_string
