@@ -88,7 +88,7 @@ La finalidad de este proyecto es proporcionar una herramienta automatizada para 
 * Documentación principal del proyecto. Proporciona instrucciones detalladas sobre la configuración, ejecución del código y la estructura del proyecto.
 ## Contribuciones
 
-Si deseas contribuir a este proyecto, siéntete libre de crear un pull request o informar sobre problemas. Apreciamos tu contribución.
+Si deseas contribuir a este proyecto, siéntete libre de crear un pull request o informar sobre problemas. Aprecio tu contribución.
 
 ## Licencia
 
