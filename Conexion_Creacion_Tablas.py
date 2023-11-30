@@ -1,8 +1,5 @@
 import psycopg2
 import utilidades
-import logging
-
-ARCHIVO_LOG = utilidades.ARCHIVO_LOG  # Importa el nombre del archivo de log desde utilidades.py
 
 def dividir_sql(sql_statements):
     """
@@ -22,7 +19,7 @@ def crear_tablas_redshift():
     """
     try:
         # Configurar el logger desde utilidades.py
-        utilidades.configurar_logger()
+        logger = utilidades.configurar_logger()
 
         # Obtener la configuración de Redshift desde utilidades.py
         redshift_config = utilidades.obtener_configuracion_redshift()
@@ -49,10 +46,10 @@ def crear_tablas_redshift():
 
                 # Confirmar la transacción
                 conn.commit()
-                logging.info("Tablas en Redshift creadas con éxito.")
+                logger.info("Tablas en Redshift creadas con éxito.")
 
     except (Exception, psycopg2.Error) as error:
-        logging.error("Error al crear tablas en Redshift: %s", error)
+        logger.error("Error al crear tablas en Redshift: %s", error)
 
 if __name__ == "__main__":
     crear_tablas_redshift()
