@@ -29,6 +29,11 @@ def obtener_cadena_conexion(redshift_config):
     return connection_string
 
 def configurar_logger():
-    """Configura el logger con fecha y hora."""
-    logging.basicConfig(filename=ARCHIVO_LOG, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+    """
+    Configura el logger para el registro de eventos.
 
+    Returns:
+        logging.Logger: Objeto logger configurado.
+    """
+    logging.basicConfig(filename=ARCHIVO_LOG, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+    return logging.getLogger(__name__)
