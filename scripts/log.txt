@@ -1,0 +1,142 @@
+2023-11-11 03:45:56,883 - INFO - Datos de acciones cargados en la tabla dim_accion - 2023-11-11 03:45:56.
+2023-11-12 22:17:48,160 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 22:17:51,646 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 22:17:59,429 - INFO - Datos de precios de acciones cargados en la tabla fac_precio_acciones.
+2023-11-12 22:26:29,329 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 22:26:32,888 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 22:26:37,513 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 22:35:27,866 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 22:35:31,390 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 22:35:36,164 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 22:48:25,345 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 22:48:28,844 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 22:48:33,470 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 23:25:23,974 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 23:25:39,610 - INFO - Datos de fechas cargados en la tabla dim_fecha.
+2023-11-12 23:25:51,448 - INFO - Datos de precios de acciones cargados en la tabla fac_precio_acciones.
+2023-11-12 23:34:47,479 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-12 23:34:52,315 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 23:34:55,816 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 23:35:00,597 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 23:47:46,388 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-12 23:47:51,209 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 23:47:54,695 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 23:47:59,491 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 23:56:07,551 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-12 23:56:12,245 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 23:56:15,663 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 23:56:20,307 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-12 23:57:09,662 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-12 23:57:14,429 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-12 23:57:17,963 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-12 23:57:22,647 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:08:51,848 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-13 00:08:56,618 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:09:00,172 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 00:09:04,801 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:18:57,963 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-13 00:19:02,571 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:19:07,594 - INFO - Datos de fechas cargados en la tabla dim_fecha.
+2023-11-13 00:19:12,355 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:24:56,216 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-13 00:25:00,992 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:25:04,589 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 00:25:09,283 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:40:47,716 - ERROR - Ocurrió un error inesperado: "None of ['Date', 'Symbol', 'Open', 'High'] are in the columns"
+2023-11-13 00:40:52,374 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:40:55,915 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 00:41:00,612 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:44:36,181 - ERROR - Ocurrió un error inesperado: Length mismatch: Expected 6 rows, received array of length 9
+2023-11-13 00:44:40,866 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:44:44,450 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 00:44:49,164 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 00:57:50,576 - ERROR - Ocurrió un error inesperado: 'MultiIndex' object has no attribute 'to_datetime'
+2023-11-13 00:57:55,281 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 00:57:58,757 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 00:58:03,380 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:13:07,699 - ERROR - Ocurrió un error inesperado: 'DatetimeIndex' object has no attribute 'to_datetime'
+2023-11-13 01:13:12,327 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:13:15,808 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:13:20,482 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:14:09,179 - ERROR - Ocurrió un error inesperado: object of type 'datetime.date' has no len()
+2023-11-13 01:14:13,821 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:14:17,437 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:14:22,131 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:15:44,156 - ERROR - Ocurrió un error inesperado: cannot include dtype 'M' in a buffer
+2023-11-13 01:15:48,830 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:15:52,324 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:15:56,921 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:18:11,215 - ERROR - Ocurrió un error inesperado: cannot include dtype 'M' in a buffer
+2023-11-13 01:18:16,007 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:18:19,599 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:18:24,407 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:23:49,644 - ERROR - Ocurrió un error inesperado: 'date'
+2023-11-13 01:23:54,568 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:23:58,313 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:24:03,270 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:27:56,001 - ERROR - Ocurrió un error inesperado: cannot include dtype 'M' in a buffer
+2023-11-13 01:28:00,596 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:28:04,162 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:28:08,872 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:37:23,814 - ERROR - Ocurrió un error inesperado: cannot include dtype 'M' in a buffer
+2023-11-13 01:37:28,419 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:37:31,886 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:37:36,494 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:40:23,016 - ERROR - Ocurrió un error inesperado: cannot include dtype 'M' in a buffer
+2023-11-13 01:40:27,606 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:40:31,147 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:40:35,864 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:44:42,281 - ERROR - Ocurrió un error inesperado: 'date'
+2023-11-13 01:44:46,987 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:44:50,467 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:44:55,113 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:46:21,903 - ERROR - Ocurrió un error inesperado: "None of ['Date', 'Symbol', 'Opens', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits'] are in the columns"
+2023-11-13 01:46:26,901 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:46:30,423 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 01:46:35,234 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 01:59:06,898 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-13 01:59:11,601 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 01:59:16,333 - INFO - Datos de fechas cargados en la tabla dim_fecha.
+2023-11-13 01:59:21,128 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 02:39:01,264 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-13 02:39:05,498 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 02:39:09,012 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-13 02:39:13,056 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-13 20:59:40,316 - INFO - Tablas en Redshift creadas con éxito.
+2023-11-13 23:39:20,986 - ERROR - Error al crear tablas en Redshift: constraint "fk_fecha" for relation "fac_precio_acciones" already exists
+
+2023-11-13 23:39:24,004 - ERROR - Ocurrió un error inesperado: "['Opens'] not in index"
+2023-11-13 23:39:28,231 - INFO - No hay acciones nuevas para cargar en la tabla dim_accion.
+2023-11-13 23:39:28,232 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-13 23:39:31,831 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-29 23:15:17,354 - INFO - Tablas en Redshift creadas con éxito.
+2023-11-29 23:15:20,282 - ERROR - Ocurrió un error inesperado: "['Opens'] not in index"
+2023-11-29 23:15:41,019 - INFO - Datos de acciones cargados en la tabla dim_accion.
+2023-11-29 23:15:41,021 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-29 23:15:44,466 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-29 23:46:48,805 - INFO - Tablas en Redshift creadas con éxito.
+2023-11-29 23:46:51,717 - ERROR - Ocurrió un error inesperado: "['Open'] not in index"
+2023-11-29 23:46:57,797 - INFO - Datos de acciones cargados en la tabla dim_accion.
+2023-11-29 23:46:57,798 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-29 23:47:01,284 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'obtener_datos_redshift'
+2023-11-30 00:21:16,472 - INFO - Tablas en Redshift creadas con éxito.
+2023-11-30 00:21:33,149 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-30 00:21:39,382 - INFO - Datos de acciones cargados en la tabla dim_accion 
+2023-11-30 00:21:58,406 - INFO - Datos de fechas cargados en la tabla dim_fecha.
+2023-11-30 00:22:36,261 - INFO - Datos de precios de acciones cargados en la tabla fac_precio_acciones.
+2023-11-30 00:55:55,195 - INFO - No hay filas nuevas para cargar en la tabla stock_data_staging.
+2023-11-30 00:56:00,088 - INFO - No hay datos nuevos para cargar en la tabla fac_precio_acciones.
+2023-11-30 00:56:03,614 - INFO - No hay nuevas fechas para cargar en la tabla dim_fecha.
+2023-11-30 02:13:06,309 - INFO - Tablas en Redshift creadas con éxito.
+2023-11-30 02:18:21,568 - INFO - Datos cargados en la tabla stock_data_staging.
+2023-11-30 02:18:21,570 - ERROR - Ocurrió un error: 'dict' object is not callable
+2023-11-30 02:18:21,570 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'utilidades'
+2023-11-30 02:18:21,571 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'utilidades'
+2023-11-30 02:28:59,614 - INFO - No hay filas nuevas para cargar en la tabla stock_data_staging.
+2023-11-30 02:28:59,805 - ERROR - Ocurrió un error: 'dict' object is not callable
+2023-11-30 02:28:59,806 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'utilidades'
+2023-11-30 02:28:59,806 - ERROR - Ocurrió un error: module 'utilidades' has no attribute 'utilidades'
+2023-11-30 02:31:06,828 - INFO - No hay filas nuevas para cargar en la tabla stock_data_staging.
+2023-11-30 02:31:22,727 - INFO - Datos de precios de acciones cargados en la tabla fac_precio_acciones.
+2023-11-30 02:31:30,756 - INFO - Datos de fechas cargados en la tabla dim_fecha.
+2023-11-30 02:31:37,063 - INFO - Datos de acciones cargados en la tabla dim_accion 
