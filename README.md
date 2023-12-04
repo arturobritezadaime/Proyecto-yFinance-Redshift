@@ -83,18 +83,50 @@ La finalidad de este proyecto es proporcionar una herramienta automatizada para 
 
 Antes de ejecutar el proyecto, asegúrate de tener todas las dependencias instaladas. Puedes instalarlas fácilmente utilizando el siguiente comando:
 
-```bash
-pip install -r requirements.txt
+bash
+pip install -r requirements-full.txt
 
 ## Ejecución del Código
 
-1. Ejecuta el script Python principal para obtener los datos históricos de precios de acciones y cargarlos en la base de datos Redshift:
+### 1. Ejecución Local:
 
-   ```bash
-   python main.py
-   ```
+1.1. **Instala las Dependencias:**
 
-2. Sigue las instrucciones y mensajes en la consola para monitorear el progreso y los resultados de la ejecución.
+Antes de ejecutar el proyecto localmente, asegúrate de tener todas las dependencias instaladas. Puedes instalarlas fácilmente utilizando el siguiente comando:
+
+```
+pip install -r requirements-full.txt
+```
+1.2. **Ejecuta el Script Principal:**
+
+Ejecuta el script Python principal para obtener los datos históricos de precios de acciones y cargarlos en la base de datos Redshift:
+
+```
+python main.py
+```
+Sigue las instrucciones y mensajes en la consola para monitorear el progreso y los resultados de la ejecución.
+
+### 2. Ejecución con Docker y Apache Airflow:
+2.1. **Construye la Imagen Docker:**
+
+Construye la imagen Docker utilizando el siguiente comando. Este paso asume que ya has incorporado el archivo config.ini con las configuraciones necesarias.
+```
+docker build -t my_airflow .
+```
+2.2. **Levanta el Contenedor con Docker Compose:**
+
+Levanta el contenedor con Docker Compose. Asegúrate de tener Docker Compose instalado en tu sistema.
+
+```
+docker-compose up -d
+```
+2.3. **Accede a Airflow Web UI:**
+
+Una vez que el contenedor esté en funcionamiento, puedes acceder a la interfaz web de Apache Airflow en http://localhost:8080. Utiliza las credenciales especificadas en el archivo .env o variables de entorno.
+
+2.4. **Inicia el Flujo DAG:**
+
+Dentro de la interfaz web de Apache Airflow, encuentra y activa el flujo DAG llamado dag. Esto iniciará la ejecución del proyecto según la programación especificada.
 
 ## Contribuciones
 
