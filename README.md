@@ -1,22 +1,21 @@
-
-```markdown
 # Proyecto de Obtención de Datos Históricos y Información de Acciones y Carga en Amazon Redshift
 
 Este proyecto te permite obtener datos históricos de precios de acciones, así como información detallada de las empresas detrás de esas acciones, utilizando Python y cargarlos en una base de datos Amazon Redshift. A continuación, encontrarás una guía para utilizar este código de manera efectiva.
 
 ## Contenido
 
-1. [Requisitos](#requisitos)
-2. [Instrucciones de Configuración](#instrucciones-de-configuración)
-3. [Origen de los Datos]
-4. [Tipo de Datos]
-5. [Finalidad del Proyecto]
-6. [Instalación de Dependencias]
-7. [Ejecución del Código](#ejecución-del-código)
-8. [Contribuciones](#contribuciones)
-9. [Licencia](#licencia)
+1. Requisitos
+2. Instrucciones de Configuración
+3. Origen de los Datos
+4. Tipo de Datos
+5. Finalidad del Proyecto
+6. Estructura del Proyecto
+7. Instalación de Dependencias
+8. Ejecución del Código
+9. Contribuciones
+10. Licencia
 
-## Requisitos
+## 1. Requisitos
 
 Asegúrate de tener instalado lo siguiente antes de utilizar el código:
 
@@ -24,7 +23,7 @@ Asegúrate de tener instalado lo siguiente antes de utilizar el código:
 - Paquetes Python: `yfinance`, `pandas`, `configparser`, `psycopg2`
 - Una base de datos Amazon Redshift configurada
 
-## Instrucciones de Configuración
+## 2. Instrucciones de Configuración
 
 1. Clona este repositorio en tu máquina local:
 
@@ -59,17 +58,17 @@ Asegúrate de tener instalado lo siguiente antes de utilizar el código:
    git config --global user.email "tucorreo@example.com"
    git config --global user.name "Arturo Britez Adaime"
    ```
-## Origen de los Datos
+## 3. Origen de los Datos
 Los datos se obtienen de dos fuentes principales:
 
 Alpha Vantage: Proporciona información detallada de las empresas, como nombre, sector, industria, etc.
 Yahoo Finance: Ofrece datos históricos de precios de acciones.
-## Tipo de Datos
+## 4. Tipo de Datos
 Información de Empresas (Dimensión Acciones): Incluye el símbolo de la acción, nombre de la empresa, sector, industria y otros detalles.
 Datos Históricos de Precios (Hechos Precio Acciones): Contiene información sobre la apertura, cierre, máximo, mínimo, volumen, dividendos y divisiones de acciones.
-## Finalidad del Proyecto
+## 5. Finalidad del Proyecto 🎯 
 La finalidad de este proyecto es proporcionar una herramienta automatizada para obtener y almacenar datos históricos y detalles de empresas en una base de datos Redshift, facilitando el análisis y la toma de decisiones relacionadas con acciones financieras.
-## Estructura del Proyecto
+## 6. Estructura del Proyecto
 * Main.py: Script principal para la obtención de datos históricos y la carga en Amazon Redshift. Utiliza bibliotecas como yfinance, pandas, y requests. Coordina las operaciones con los módulos Carga.py y Conexion_Creacion_Tablas.py.
 
 * Carga.py: Módulo encargado de la carga de diferentes tipos de datos en Amazon Redshift. Contiene funciones específicas para cargar datos de acciones, fechas y precios de acciones en las tablas correspondientes, gestionando la lógica de redondeo y la gestión de duplicados. Además, implementa el registro de eventos a través de logging para un seguimiento detallado.
@@ -79,14 +78,14 @@ La finalidad de este proyecto es proporcionar una herramienta automatizada para 
 * Codigo_SQL.sql: Contiene sentencias SQL para la creación de tablas en Amazon Redshift, definiendo las tablas para el área de staging (stock_data_staging), la Dimensión Fecha (Dim_Fecha), la Dimensión Acción (Dim_Accion), y la tabla de hechos (Fac_Precio_Acciones).
 * Readme.md: Documentación principal del proyecto. Proporciona instrucciones detalladas sobre la configuración, ejecución del código y la estructura del proyecto.
 
-## Instalación de Dependencias
+## 7. Instalación de Dependencias
 
 Antes de ejecutar el proyecto, asegúrate de tener todas las dependencias instaladas. Puedes instalarlas fácilmente utilizando el siguiente comando:
 
 bash
 pip install -r requirements-full.txt
 
-## Ejecución del Código
+## 8. Ejecución del Código
 
 ### 1. Ejecución Local:
 
@@ -128,11 +127,11 @@ Una vez que el contenedor esté en funcionamiento, puedes acceder a la interfaz 
 
 Dentro de la interfaz web de Apache Airflow, encuentra y activa el flujo DAG llamado dag. Esto iniciará la ejecución del proyecto según la programación especificada.
 
-## Contribuciones
+## 9. Contribuciones
 
 Si deseas contribuir a este proyecto, siéntete libre de crear un pull request o informar sobre problemas. Aprecio tu contribución.
 
-## Licencia
+## 10. Licencia
 
 Este proyecto está bajo la licencia [LICENSE](LICENSE).
 
