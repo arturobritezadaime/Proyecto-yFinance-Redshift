@@ -1,11 +1,13 @@
 import psycopg2
 import utilidades
 
+
 def dividir_sql(sql_statements):
     """
     Divide el contenido del archivo en sentencias SQL individuales.
     """
     return [sql.strip() for sql in sql_statements.split(';') if sql.strip()]
+
 
 def ejecutar_transaccion(cursor, transaction_sql):
     """
@@ -13,10 +15,13 @@ def ejecutar_transaccion(cursor, transaction_sql):
     """
     cursor.execute(transaction_sql)
 
+
 def crear_tablas_redshift():
     """
     Crea las tablas en Redshift.
     """
+    logger = None  # Inicializa la variable logger fuera del bloque try
+
     try:
         # Configurar el logger desde utilidades.py
         logger = utilidades.configurar_logger()
@@ -49,7 +54,11 @@ def crear_tablas_redshift():
                 logger.info("Tablas en Redshift creadas con éxito.")
 
     except (Exception, psycopg2.Error) as error:
-        logger.error("Error al crear tablas en Redshift: %s", error)
+        if logger is not None:
+            logger.error("Error al crear tablas en Redshift: %s", error)
+        else:
+            print("Error al crear tablas en Redshift: %s" % error)
+
 
 if __name__ == "__main__":
     crear_tablas_redshift()
