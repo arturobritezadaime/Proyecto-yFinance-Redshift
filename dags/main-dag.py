@@ -4,9 +4,6 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from scripts.Main import main
 
-def install_xlsxwriter():
-    import subprocess
-    subprocess.run(["pip", "install", "xlsxwriter"])
 
 default_args = {
     'owner': 'airflow',
@@ -17,10 +14,10 @@ default_args = {
 }
 
 dag = DAG(
-    'dag',
+    'ejecucion_diaria_main',
     default_args=default_args,
-    description='DAG con main.py',
-    schedule_interval=timedelta(days=1),  # Ajusta según tus necesidades, actualmente dia=1
+    description='DAG para ejecutar el script main.py diariamente',
+    schedule_interval=timedelta(days=1),
 )
 
 # Dummy operators
@@ -29,17 +26,6 @@ dummy_inicio = DummyOperator(
     dag=dag,
 )
 
-dummy_fin = DummyOperator(
-    task_id='dummy_fin',
-    dag=dag,
-)
-
-# Python operator para instalar xlsxwriter
-install_xlsxwriter_task = PythonOperator(
-    task_id='install_xlsxwriter',
-    python_callable=install_xlsxwriter,
-    dag=dag,
-)
 
 # Python operator para ejecutar main.py
 main_task = PythonOperator(
@@ -50,4 +36,4 @@ main_task = PythonOperator(
 )
 
 # Define el orden de ejecución
-dummy_inicio >> install_xlsxwriter_task >> main_task >> dummy_fin
+dummy_inicio >> main_task
