@@ -5,10 +5,10 @@ FROM apache/airflow:latest
 RUN pip install --upgrade pip
 
 # Copia todo el contenido del proyecto al contenedor
-COPY . /opt/airflow/
+# COPY . /opt/airflow/ no es necesario
 
 # Establece el directorio de trabajo
-WORKDIR /opt/airflow/
+# WORKDIR /opt/airflow/ no es necesario
 
 # Instala las dependencias desde requirements-full.txt que en realidad cargo las librerias necesarias
 RUN pip install --no-cache-dir -r requirements-full.txt
