@@ -10,6 +10,8 @@ from Carga import (
     cargar_dataframe_precio_acciones_en_redshift,
     cargar_dataframe_staging_en_redshift
 )
+import smtplib
+from scripts import utilidades
 
 
 def obtener_configuracion():
@@ -17,7 +19,7 @@ def obtener_configuracion():
     Obtiene la configuración desde un archivo de configuración.
     """
     config = configparser.ConfigParser()
-    config.read('config/config.ini')
+    config.read('../config/config.ini')
     return config
 
 
@@ -118,6 +120,25 @@ def guardar_dataframes_en_excel(df_stock_data_staging, df_dim_fecha, df_fac_prec
         df_fac_precio_acciones.to_excel(writer, sheet_name='Fac_Precio_Acciones', index=False)
         df_dim_acciones.to_excel(writer, sheet_name='Dim_Acciones', index=False)
 
+def enviar_alerta(symbol, threshold, today_high_value, email_config):
+    """
+    Envía una alerta por correo electrónico.
+    """
+    sender_email = email_config['sender_email']
+    sender_password = email_config['sender_password']
+    receiver_email = email_config['receiver_email']
+    logger = utilidades.configurar_logger()
+    try:
+        server = smtplib.SMTP(email_config['smtp_server'], email_config['smtp_port'])
+        server.starttls()
+        server.login(sender_email, sender_password)
+        subject = f'Alerta de alta cotización para {symbol}'
+        body_text = f'El valor para {symbol} ha superado el umbral de {threshold}. Valor actual: {today_high_value}'
+        message = f'Subject: {subject}\n\n{body_text}'
+        server.sendmail(sender_email, receiver_email, message)
+        logger.info('Alerta enviada con éxito')
+    except Exception as exception:
+        logger.error(f'Error al enviar la alerta: {exception}')
 
 def main():
     config = obtener_configuracion()
@@ -143,6 +164,22 @@ def main():
     cargar_dataframe_fecha_en_redshift(df_dim_fecha, 'dim_fecha')
     cargar_dataframe_accion_en_redshift(df_dim_acciones, 'dim_accion')
 
+# Verificar y enviar alertas
+    alertas_config = eval(config['alertas']['lista'])
+    email_config = {
+        'smtp_server': config['email']['smtp_server'],
+        'smtp_port': int(config['email']['smtp_port']),
+        'sender_email': config['email']['sender_email'],
+        'sender_password': config['email']['sender_password'],
+        'receiver_email': config['email']['receiver_email']
+    }
+
+    for symbol, threshold in alertas_config:
+        data_for_symbol = df_stock_data_staging[df_stock_data_staging['Symbol'] == symbol]
+        today_high_value = data_for_symbol[data_for_symbol['Date'] == pd.to_datetime('today')]['High'].values
+
+        if len(today_high_value) > 0 and today_high_value[0] > threshold:
+            enviar_alerta(symbol, threshold, today_high_value[0], email_config)
 
 if __name__ == "__main__":
     main()
